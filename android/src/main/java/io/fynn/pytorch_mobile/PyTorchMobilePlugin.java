@@ -90,7 +90,7 @@ public class PyTorchMobilePlugin implements FlutterPlugin, MethodCallHandler {
         //run model
         Tensor outputTensor = null;
         try {
-          outputTensor = module.forward(IValue.from(inputTensor)).toTensor();
+          outputTensor = module.forward(IValue.from(inputTensor)).toTuple();
         }catch(RuntimeException e){
           Log.e("PyTorchMobile", "Your input type " + dtype.toString().toLowerCase()  + " (" + Convert.dtypeAsPrimitive(dtype.toString()) +") " + "does not match with model input type",e);
           result.success(null);
